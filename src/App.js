@@ -29,9 +29,8 @@ useEffect(()=>{
 
   async function handleRemoveRepository(id) {
     await api.delete(`repositories/${id}`);
-    const response = await api.get('repositories');
-    setRepositories(response.data);
-    console.log(response.data);
+    const newRepositories = repositories.filter(repository => repository.id !== id);
+    setRepositories(newRepositories);
     
   }
 
